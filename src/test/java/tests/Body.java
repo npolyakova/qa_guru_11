@@ -1,13 +1,23 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
-public class DesktopBody extends TestBase{
+public class Body {
+
+    @BeforeAll
+    public static void openPage(){
+        Configuration.baseUrl="https://pvz.kazanexpress.ru/";
+        open("");
+    }
 
     @Test
     @DisplayName("Блок открытия ПВЗ")
@@ -70,5 +80,26 @@ public class DesktopBody extends TestBase{
         $(".design").scrollIntoView(true);
         $(".design__title").shouldBe(visible);
         $(".design__slider").shouldBe(visible);
+    }
+
+    @Test
+    @DisplayName("Слайдер работает корректно")
+    public void slider(){
+        $(".design").scrollIntoView(true);
+        $(".slick-track [aria-hidden=false]").shouldHave(Condition.attribute("data-slick-index", String.valueOf(0)));
+        $(".design__arrow.next").click();
+        $(".slick-track [aria-hidden=false]").shouldHave(Condition.attribute("data-slick-index", String.valueOf(1)));
+        $(".design__arrow.prev").click();
+        $(".slick-track [aria-hidden=false]").shouldHave(Condition.attribute("data-slick-index", String.valueOf(0)));
+    }
+
+    @Test
+    @DisplayName("Чат появляется при прокрутке страницы")
+    public void chatIsVisibleAndClickable() {
+        $(".ko-container").shouldHave(attribute("ko-show-later", "0.5"));
+        $("#about").scrollIntoView(true);
+        $(".ko-container").shouldHave(attribute("ko-show-later", "0"));
+        $(".ko-container").click();
+        $(".ko-container.ko-turn").shouldBe(visible);
     }
 }
