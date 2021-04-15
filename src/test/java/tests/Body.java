@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Body {
 
@@ -96,8 +95,10 @@ public class Body {
     @Test
     @DisplayName("Чат появляется при прокрутке страницы")
     public void chatIsVisibleAndClickable() {
+        $(".hero__info").scrollIntoView(true);
         $(".ko-container").shouldHave(attribute("ko-show-later", "0.5"));
         $("#about").scrollIntoView(true);
+        sleep(1000);
         $(".ko-container").shouldHave(attribute("ko-show-later", "0"));
         $(".ko-container").click();
         $(".ko-container.ko-turn").shouldBe(visible);
