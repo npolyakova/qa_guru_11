@@ -13,4 +13,10 @@ public interface WebConfig extends Config {
 
     @Key("web.remote.driver.password")
     String webRemoteDriverPassword();
+
+    @Key("web.remote.driver")
+    String remoteDriver();
+
+    @Key("web.video.storage")
+    String videoStorage();
 }

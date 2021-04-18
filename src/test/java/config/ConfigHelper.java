@@ -10,7 +10,7 @@ public class ConfigHelper {
 
     public static String getWebRemoteDriver() {
         // https://%s:%s@selenoid.autotests.cloud/wd/hub/
-        return String.format(System.getProperty("web.remote.driver"),
+        return String.format(getWebConfig().remoteDriver(),
                 getWebConfig().webRemoteDriverUser(),
                 getWebConfig().webRemoteDriverPassword());
     }
@@ -20,7 +20,7 @@ public class ConfigHelper {
     }
 
     public static String getWebVideoStorage() {
-        return System.getProperty("video.storage");
+        return getWebConfig().videoStorage();
     }
 
     public static boolean isVideoOn() {
