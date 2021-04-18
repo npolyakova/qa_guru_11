@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class FormTest {
 
@@ -105,7 +106,7 @@ public class FormTest {
         $("#city").shouldHave(Condition.cssValue("border-bottom-color" , "rgba(239, 79, 76, 1)"));
     }
 
-    /*@Test
+    @Test
     @DisplayName("Отправка формы с пустыми полями")
     public void checkEmptyFields(){
         $("#fio").clear();
@@ -129,6 +130,6 @@ public class FormTest {
         String alert = getWebDriver().switchTo()
                 .alert().getText();
         assert(alert!=null);
-    }*/
+    }
 }
 
