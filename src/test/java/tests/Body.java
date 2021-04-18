@@ -2,10 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
@@ -14,9 +11,8 @@ import static com.codeborne.selenide.Selenide.*;
 @Tag("web")
 public class Body extends TestBase{
 
-    @BeforeAll
-    public static void openPage(){
-        Configuration.baseUrl="https://pvz.kazanexpress.ru/";
+    @BeforeEach
+    public void openPage(){
         open("");
     }
 
@@ -34,6 +30,7 @@ public class Body extends TestBase{
     @Test
     @DisplayName("Блок 'О компании в цифрах'")
     public void checkAboutCompanyDiv(){
+        open("");
         $("#about").scrollIntoView(true);
         $(".about__title").shouldBe(visible);
         $(".about__advantages").shouldBe(visible);

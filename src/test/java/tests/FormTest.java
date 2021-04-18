@@ -4,10 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import config.DataConfig;
 import org.aeonbits.owner.ConfigFactory;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -18,9 +15,8 @@ public class FormTest extends TestBase{
 
     final DataConfig formData = ConfigFactory.create(DataConfig.class, System.getProperties());
 
-    @BeforeAll
-    public static void openPage(){
-        Configuration.baseUrl="https://pvz.kazanexpress.ru/";
+    @BeforeEach
+    public void openPage(){
         open("");
     }
 

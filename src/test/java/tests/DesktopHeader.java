@@ -1,10 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -13,9 +10,8 @@ import static com.codeborne.selenide.Selenide.*;
 @Tag("web")
 public class DesktopHeader extends TestBase{
 
-    @BeforeAll
-    public static void openPage(){
-        Configuration.baseUrl="https://pvz.kazanexpress.ru/";
+    @BeforeEach
+    public void openPage(){
         open("");
     }
 
