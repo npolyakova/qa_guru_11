@@ -6,13 +6,15 @@ import config.DataConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class FormTest {
+@Tag("web")
+public class FormTest extends TestBase{
 
     final DataConfig formData = ConfigFactory.create(DataConfig.class, System.getProperties());
 
